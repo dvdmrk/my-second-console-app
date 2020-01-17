@@ -1,5 +1,9 @@
 # my-second-console-app
-Step 1) dotnet publish -c release
+
+After pulling this repository: publish changes, build the image, and run the container. Notice publishing takes place within the contianer directory, wheras docker commands are executed from the parent directory. 
+
+## Step 1) dotnet publish -c release
+```powershell
 c:\Source\my-second-console-app\container>dotnet publish -c release
 Microsoft (R) Build Engine version 16.4.0+e901037fe for .NET Core
 Copyright (C) Microsoft Corporation. All rights reserved.
@@ -7,8 +11,10 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Restore completed in 154.8 ms for c:\Source\my-second-console-app\container\app.csproj.
   app -> c:\Source\my-second-console-app\container\bin\release\netcoreapp3.1\app.dll
   app -> c:\Source\my-second-console-app\container\bin\release\netcoreapp3.1\publish\
+```
 
-Step 2) docker build -t containerimage -f Dockerfile .
+## Step 2) docker build -t containerimage -f Dockerfile .
+```powershell
 c:\Source\my-second-console-app>docker build -t containerimage -f Dockerfile .
 Sending build context to Docker daemon  728.1kB
 Step 1/3 : FROM mcr.microsoft.com/dotnet/core/runtime:3.1
@@ -24,11 +30,14 @@ Removing intermediate container 7ae92ed6b3e6
  ---> 426e8d7300d5
 Successfully built 426e8d7300d5
 Successfully tagged containerimage:latest
+```
 
-Step 3) docker run -it --rm containerimage
+## Step 3) docker run -it --rm containerimage
+```powershell
 Counter: 1
 Counter: 2
 Counter: 3
 Counter: 4
 Counter: 5
 ^C
+```
